@@ -35,7 +35,7 @@ exports.main = async  (event, context) => {
         unionid: wxContext.UNIONID,
         name: nm,
         id: id,
-        due: Date(''),
+        due: db.serverDate(),
         phone: ""
       }
     })

@@ -72,7 +72,11 @@ Page({
   data: {
     multiArray: [],
     multiIndex: [0, 0],
-    instruction:""
+    instruction:{
+      "CYLINL":0,
+      "ID3":"",
+      "POINT":1
+    }
   },
   bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -112,8 +116,24 @@ Page({
       },
       success: res => {
         console.log('[云函数] [query] user openid: ', res.result)
+        var myopia18 = res.result.data;
+        var err = res.result.errMsg;
+        console.log(myopia18,err);
+        if(myopia18.length != 1){
+          if (err.search("ok")){
+            this.setData({
+              instruction: "居然没查到"
+            })
+          }
+          else{
+            this.setData({
+              instruction: "网络问题，过会再试"
+            })
+          }
+          return 
+        }
         this.setData({
-          instruction: JSON.stringify(res.result)
+          instruction: JSON.stringify(myopia18[0])
         })
       },
       fail: err => {
