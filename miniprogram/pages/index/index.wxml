@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    </view>
+  </view>
+
+  <!-- 计算BMI -->
+  <view class="uploader">
+    <navigator url="../bmi/bmi" open-type="navigate" class="uploader-text">
+      <text>帮你算算BMI</text>
+    </navigator>
+  </view>
+
+  <!-- 2018儿童青少年近视结果查询 -->
+  <view class="uploader">
+    <navigator url="../myopia/myopia2018" open-type="navigate" class="uploader-text">
+      <text>2018儿童青少年近视结果查询</text>
+    </navigator>
+  </view>
+
+</view>

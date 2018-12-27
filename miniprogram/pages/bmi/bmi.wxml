@@ -1,0 +1,27 @@
+<!--miniprogram/pages/bmi/bmi.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="contain" style="flex-direction:row">
+    身高:
+    <input name="sg" type="digit" maxlength="6" placeholder="保留两位小数" /><br/> 体重:
+    <input name="tz" type="digit" maxlength="6" placeholder="保留两位小数" />
+
+
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio"> 年龄
+        <radio value="adult" checked="true" />18岁以上成人
+      </label>
+      <label class="radio">
+        <radio value="child" />少年儿童
+        <view class="birth {{birthshow?'show':'hide'}}">
+          <picker mode="date" value="{{date}}" fields="month" bindchange="bindDateChange">
+            <view class="picker">出生日期: {{date}}</view>
+          </picker>
+        </view>
+      </label>
+    </radio-group>
+  </view>
+  <button form-type="submit">计算BMI</button>
+</form>
+<text>
+你的bmi是：{{bmi}}
+</text>
