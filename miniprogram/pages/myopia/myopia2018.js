@@ -4,13 +4,11 @@ Page({
   /**
    * 页面的初始数据
    */
-locate :{
-    "district" :[
-      {
-        "school" :[
-          {
-            "code":"01",
-            "name":"郭守敬小学"
+  locate: {
+    "district": [{
+        "school": [{
+            "code": "01",
+            "name": "郭守敬小学"
           },
           {
             "code": "02",
@@ -37,12 +35,11 @@ locate :{
             "name": "邢台市技师学院"
           }
         ],
-        "code":"01",
-        "name" :"桥西区"
+        "code": "01",
+        "name": "桥西区"
       },
       {
-        "school": [
-          {
+        "school": [{
             "code": "01",
             "name": "平乡县第一中学"
           },
@@ -73,8 +70,9 @@ locate :{
     ]
   },
   data: {
-    multiArray: [ ],
-    multiIndex: [0, 0]
+    multiArray: [],
+    multiIndex: [0, 0],
+    instruction:""
   },
   bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -92,26 +90,46 @@ locate :{
     //更新滑动的第几列e.detail.column的数组下标值e.detail.value
     data.multiIndex[e.detail.column] = e.detail.value;
 
-    if(e.detail.column == 0){
-  data.multiIndex = [e.detail.value, 0];
-} else  {
-  //如果更新的是第二列“市”，第一列“省”的下标不变，第三列“区”的数组下标置为0
-  data.multiIndex = [data.multiIndex[0], e.detail.value];
-}
+    if (e.detail.column == 0) {
+      data.multiIndex[0] = e.detail.value;
+      data.multiArray[1] = this.locate.district[e.detail.value].school;
+      console.log(data.multiArray)
+    } else {
+      data.multiIndex[1] = e.detail.value;
+    }
+    this.setData(data);
+  },
 
-  data.multiArray[1] = [];
-  data.multiArray[2] = [];
-
-this.setData(data);
-
+  queryMyopia: function(e) {
+    var index = [this.data.multiIndex[0] + 1, this.data.multiIndex[1]+1];
+     // 调用云函数
+    wx.cloud.callFunction({
+      name: 'query',
+      data: {
+        "index": index,
+        "id3": e.detail.value.id3,
+        "name": e.detail.value.name
+      },
+      success: res => {
+        console.log('[云函数] [query] user openid: ', res.result)
+        this.setData({
+          instruction: JSON.stringify(res.result)
+        })
+      },
+      fail: err => {
+        console.error('[云函数] [query] 调用失败', err)
+        wx.navigateTo({
+          url: '../index/index',
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var temp = this.locate;
-    this.setData(
-      {
+    this.setData({
         multiArray: [temp.district, temp.district[0].school],
         multiIndex: [0, 0]
       },

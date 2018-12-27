@@ -1,5 +1,5 @@
 <!--miniprogram/pages/myopia/myopia2018.wxml-->
-<form>
+<form bindsubmit="queryMyopia">
 <view class="section">
   <view class="section__title">选择学校</view>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange"
@@ -10,8 +10,10 @@
           <view class="contain" style="flex-direction:row">
     姓名:
     <input name="name" type="text" maxlength="10" placeholder="" /><br/>身份证号码:
-    <input name="id3" type="idcard" maxlength="18" placeholder="" />
+    <input name="id3" type="idcard" maxlength="18" value='130503201301240050' placeholder="身份证号" />
   </view>
           <button form-type="submit">查询</button>
 </form>
-
+<text>
+{{instruction}}
+</text>
