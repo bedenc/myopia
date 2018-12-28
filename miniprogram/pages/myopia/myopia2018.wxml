@@ -14,6 +14,13 @@
   </view>
           <button form-type="submit">查询</button>
 </form>
+<view class="context">
+<text class='h2'>远视力</text>
+<rich-text nodes="{{shili}}" bindtap="tap"></rich-text>
+<text class='h2'>电脑验光</text>
+<rich-text nodes="{{quguang}}" bindtap="tap"></rich-text>
 <rich-text>
 {{instruction}}
 </rich-text>
+</view>
+

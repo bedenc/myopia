@@ -72,11 +72,172 @@ Page({
   data: {
     multiArray: [],
     multiIndex: [0, 0],
-    instruction:{
-      "CYLINL":0,
-      "ID3":"",
-      "POINT":1
-    }
+    instruction: "",
+    shili :[{
+      name: 'table',
+      attrs: {
+        class: 'div_table'
+      },
+      children: [{
+        name: 'tbody',
+        children: [{
+          name: 'tr',
+          children: [{
+            name: 'th',
+            attrs: { },
+            children: [{
+              type: 'text',
+              text: '左右'
+            }]
+          },
+          {
+            name: 'th',
+            children: [{
+              type: 'text',
+              text: 's'
+            }]
+          },
+          {
+            name: 'th',
+            children: [{
+              type: 'text',
+              text: 'c'
+            }]
+          }  ]
+        },
+        {
+          name: 'tr',
+          children: [{
+            name: 'th',
+            children: [{
+              type: 'text',
+              text: 'R'
+            }]
+          },
+          {
+            name: 'td',
+            children: [{
+              type: 'text',
+              text: '3.0d'
+            }]
+          },
+          {
+            name: 'td',
+            children: [{
+              type: 'text',
+              text: '3.0d'
+            }]
+          }
+          ]
+        }]
+      }]
+    }],
+    quguang: [{
+      name: 'table',
+      attrs: {
+        class: 'div_table'
+      },
+      children: [{
+        name: 'tbody',
+        children: [{
+            name: 'tr',
+            children: [{
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: '左右'
+                }]
+              },
+              {
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: 's'
+                }]
+              },
+              {
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: 'c'
+                }]
+              },
+              {
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: 'a'
+                }]
+              }
+            ]
+          },
+          {
+            name: 'tr',
+            children: [{
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: 'R'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0d'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0d'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '180'
+                }]
+              }
+            ]
+          },
+          {
+            name: 'tr',
+            children: [{
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: 'R'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0d'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0d'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '180'
+                }]
+              }
+            ]
+          }
+        ]
+      }]
+    }]
   },
   bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -105,8 +266,8 @@ Page({
   },
 
   queryMyopia: function(e) {
-    var index = [this.data.multiIndex[0] + 1, this.data.multiIndex[1]+1];
-     // 调用云函数
+    var index = [this.data.multiIndex[0] + 1, this.data.multiIndex[1] + 1];
+    // 调用云函数
     wx.cloud.callFunction({
       name: 'query',
       data: {
@@ -117,29 +278,28 @@ Page({
       success: res => {
         console.log('[云函数] [query] user openid: ', res.result)
         var myopia18 = res.result.data;
-        var err = res.result.errMsg;
-        console.log(myopia18,err);
-        if(myopia18.length != 1){
-          if (err.search("ok")){
+        var eerr = res.result.errMsg;
+        console.log(myopia18, eerr);
+        if (myopia18.length != 1) {
+          if (err.search("ok")) {
             this.setData({
               instruction: "居然没查到"
             })
-          }
-          else{
+          } else {
             this.setData({
               instruction: "网络问题，过会再试"
             })
           }
-          return 
+          return
         }
         this.setData({
           instruction: JSON.stringify(myopia18[0])
         })
       },
       fail: err => {
-        console.error('[云函数] [query] 调用失败', err)
-        wx.navigateTo({
-          url: '../index/index',
+        console.error('[云函数-query] 网络有问题？？', err)
+        this.setData({
+          instruction: '哎呀，网络有问题'
         })
       }
     })
