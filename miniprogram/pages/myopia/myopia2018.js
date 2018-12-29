@@ -73,71 +73,13 @@ Page({
     multiArray: [],
     multiIndex: [0, 0],
     instruction: "",
-    shili :[{
+   
+    shili: [{
       name: 'table',
       attrs: {
         class: 'div_table'
       },
-      children: [{
-        name: 'tbody',
-        children: [{
-          name: 'tr',
-          children: [{
-            name: 'th',
-            attrs: { },
-            children: [{
-              type: 'text',
-              text: '左右'
-            }]
-          },
-          {
-            name: 'th',
-            children: [{
-              type: 'text',
-              text: 's'
-            }]
-          },
-          {
-            name: 'th',
-            children: [{
-              type: 'text',
-              text: 'c'
-            }]
-          }  ]
-        },
-        {
-          name: 'tr',
-          children: [{
-            name: 'th',
-            children: [{
-              type: 'text',
-              text: 'R'
-            }]
-          },
-          {
-            name: 'td',
-            children: [{
-              type: 'text',
-              text: '3.0d'
-            }]
-          },
-          {
-            name: 'td',
-            children: [{
-              type: 'text',
-              text: '3.0d'
-            }]
-          }
-          ]
-        }]
-      }]
-    }],
-    quguang: [{
-      name: 'table',
-      attrs: {
-        class: 'div_table'
-      },
-      children: [{
+      children:[{
         name: 'tbody',
         children: [{
             name: 'tr',
@@ -145,28 +87,41 @@ Page({
                 name: 'th',
                 children: [{
                   type: 'text',
-                  text: '左右'
+                  text: '项目'
                 }]
               },
               {
                 name: 'th',
                 children: [{
                   type: 'text',
-                  text: 's'
+                  text: '5米视力'
+                }]
+              }, {
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: '矫正视力'
                 }]
               },
               {
                 name: 'th',
                 children: [{
                   type: 'text',
-                  text: 'c'
+                  text: '球镜S'
                 }]
               },
               {
                 name: 'th',
                 children: [{
                   type: 'text',
-                  text: 'a'
+                  text: '柱镜C'
+                }]
+              },
+              {
+                name: 'th',
+                children: [{
+                  type: 'text',
+                  text: '轴位A'
                 }]
               }
             ]
@@ -177,7 +132,21 @@ Page({
                 name: 'th',
                 children: [{
                   type: 'text',
-                  text: 'R'
+                  text: '右眼R'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0d'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0d'
                 }]
               },
               {
@@ -209,7 +178,21 @@ Page({
                 name: 'th',
                 children: [{
                   type: 'text',
-                  text: 'R'
+                  text: '左眼L'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0'
+                }]
+              },
+              {
+                name: 'td',
+                children: [{
+                  type: 'text',
+                  text: '3.0'
                 }]
               },
               {
@@ -313,8 +296,9 @@ Page({
         multiArray: [temp.district, temp.district[0].school],
         multiIndex: [0, 0]
       },
-      console.log(temp)
+      console.log()
     )
+
   },
 
   /**
