@@ -1,31 +1,97 @@
 <!--index.wxml-->
-<view class="container">
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <form bindsubmit="queryMyopia">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">选择学校</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
+                  <view class="weui-input">{{multiArray[0][multiIndex[0]].name}}{{multiArray[1][multiIndex[1]].name}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="name" type="text" maxlength="10" placeholder="请输入验证码" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                <view class="weui-label">身份证号</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="id3" type="idcard" maxlength="18" value='130503201301240050' placeholder="身份证号" />
+              </view>
+            </view>
+            <view class="button-sp-area">
+              <button class="weui-btn" type="primary" plain="true" form-type="submit">按钮</button>
+            </view>
+          </form>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <form bindsubmit="calbmi" bindreset="formReset">
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                <view class="weui-label">身高</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="sg" type="digit" maxlength="6" placeholder="保留两位小数" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                <view class="weui-label">体重</view>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="tz" type="digit" maxlength="6" placeholder="保留两位小数" />
+              </view>
+            </view>
+            <view class="weui-cells weui-cells_after-title">
+              <radio-group bindchange="radioChange">
+                <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+                  <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+                  <view class="weui-cell__bd">{{item.name}}</view>
+                  <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                    <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                  </view>
+                </label>
+              </radio-group>
 
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+            </view>
+            <view class="{{birthshow?'show':'hide'}}">
+            <view class="weui-cell weui-cell_input ">
+              <view class="weui-cell__hd">
+                <view class="weui-label">出生年月</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="date" value="{{date}}" fields="month" start="1900-01" end="2013-12" bindchange="bindDateChange">
+                  <view class="weui-input">{{date}}</view>
+                </picker>
+              </view>
+            </view>
+            </view>
+            <view class="button-sp-area">
+              <button class="weui-btn" form-type="submit" type="primary" plain="true">计算BMI</button>
+            </view>
+          </form>
+        </view>
+      </view>
     </view>
   </view>
-
-  <!-- 计算BMI -->
-  <view class="uploader">
-    <navigator url="../bmi/bmi" open-type="navigate" class="uploader-text">
-      <text>帮你算算BMI</text>
-    </navigator>
-  </view>
-
-  <!-- 2018儿童青少年近视结果查询 -->
-  <view class="uploader">
-    <navigator url="../myopia/myopia2018" open-type="navigate" class="uploader-text">
-      <text>2018儿童青少年近视结果查询</text>
-    </navigator>
-  </view>
-
 </view>

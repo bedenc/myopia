@@ -1,27 +1,37 @@
 <!--miniprogram/pages/bmi/bmi.wxml-->
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <view class="contain" style="flex-direction:row">
-    身高:
-    <input name="sg" type="digit" maxlength="6" placeholder="保留两位小数" /><br/> 体重:
-    <input name="tz" type="digit" maxlength="6" placeholder="保留两位小数" />
-
-
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio"> 年龄
-        <radio value="adult" checked="true" />18岁以上成人
-      </label>
-      <label class="radio">
-        <radio value="child" />少年儿童
-        <view class="birth {{birthshow?'show':'hide'}}">
-          <picker mode="date" value="{{date}}" fields="month" bindchange="bindDateChange">
-            <view class="picker">出生日期: {{date}}</view>
-          </picker>
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Article</view>
+        <view class="page__desc">文章</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1">大标题</view>
+            <view class="weui-article__section">
+                <view class="weui-article__title">章标题</view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">1.1 节标题</view>
+                    <view class="weui-article__p">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                    </view>
+                    <view class="weui-article__p">
+                        <image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />
+                        <image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">1.2 节标题</view>
+                    <view class="weui-article__p">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </view>
+                </view>
+            </view>
         </view>
-      </label>
-    </radio-group>
-  </view>
-  <button form-type="submit">计算BMI</button>
-</form>
-<text>
-你的bmi是：{{bmi}}
-</text>
+    </view>
+</view>

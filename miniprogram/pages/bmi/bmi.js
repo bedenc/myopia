@@ -5,38 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isg : 120,
-    itz: 50,
     age: 0,
     bmi: 0,
-    birthshow: false,
-    date: ""
   },
 
-  bindDateChange:function(e){
-    if (e) {
-      this.setData({
-        'date': e.detail.value
-      })}
-  },
 
-  radioChange:function(e){
-    if (e.detail.value == "child")
-    this.setData({
-      'birthshow': true
-    });
-    else 
-      this.setData({
-        'birthshow': false
-      }); 
-  },
-  formSubmit:function(e){
-    var b = e.detail.value.sg;
-    var c = e.detail.value.tz;
-    var a = Math.round(c* 100000 / (b * b)) /10;
-    this.setData({ 'bmi': a});
-    console.log(a,b)    
-  },
   /**
    * 生命周期函数--监听页面加载
    */

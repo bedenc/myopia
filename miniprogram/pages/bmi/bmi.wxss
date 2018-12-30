@@ -1,8 +1,2 @@
 /* miniprogram/pages/bmi/bmi.wxss */
 @import "../../style/guide.wxss";
-.hide{
- display: none;
-}
-.show{ 
- display: block;
-}
