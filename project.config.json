@@ -32,8 +32,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"name": "xtcdc",
+					"pathName": "pages/index/index"
 				}
 			]
 		}

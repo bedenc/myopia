@@ -72,8 +72,20 @@ Page({
           },
           {
             "code": 6,
-            "name": "平乡县中学"
-          }
+            "name": "aaa"
+          },
+          {
+            "code": 7,
+            "name": "aaa"
+          },
+          {
+            "code": 8,
+            "name": "aaa"
+          },
+          {
+            "code": 9,
+            "name": "aaa"
+          }          
         ],
         "code": 2,
         "name": "平乡县"
@@ -81,7 +93,7 @@ Page({
     ]
   },
   data: {
-    tabs: ["2018近视反馈", "BMI计算"],
+    tabs: ["2018视力反馈", "BMI计算"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
@@ -109,13 +121,21 @@ tz:"",
     var index = [this.data.multiArray[0][this.data.multiIndex[0]].code, this.data.multiArray[1][this.data.multiIndex[1]].code];
     var name = e.detail.value.name;
     var id3 = e.detail.value.id3;
-    var a = RegExp("^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$","i");
+    var a = /\d{17}([0-9]|x)/;
+    console.log(a.test(id3),id3);
     if (!a.test(id3)) {
         wx.showToast({
           title: '身份证号有误',
           duration:3000,
         })
         return;
+    }
+    if (!name) {
+      wx.showToast({
+        title: '名字不能空',
+        duration: 3000,
+      })
+      return;
     }
   //名字、身份证号非空
     if (name && id3) {
@@ -171,7 +191,7 @@ tz:"",
   },
 
   sginput: function(e) {
-    var a = RegExp("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$");
+    var a = /^[1-9]\d*\.?\d*/;
     if(a.test(e.detail.value)){
       if (e.detail.value > 100 && e.detail.value < 250) 
       return;
@@ -187,7 +207,7 @@ tz:"",
 
 
   tzinput: function(e) {
-    var a = RegExp("^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$");
+    var a = /^[1-9]\d*\.?\d*/;
     if (a.test(e.detail.value)) {
       if (e.detail.value >20 && e.detail.value < 200)
         return;

@@ -48,10 +48,10 @@
           <form bindsubmit="calbmi" >
             <view class="weui-cell weui-cell_input weui-cell_vcode">
               <view class="weui-cell__hd">
-                <view class="weui-label">身高Cm</view>
+                <view class="weui-label">身高cm</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindblur="sginput" name="sg" value="{{sg}}" type="number" maxlength="6" placeholder="一位小数有效" />
+                <input class="weui-input" bindblur="sginput" name="sg" value="{{sg}}" type="digit" maxlength="6" placeholder="一位小数有效" />
               </view>
             </view>
             <view class="weui-cell weui-cell_input weui-cell_vcode">
