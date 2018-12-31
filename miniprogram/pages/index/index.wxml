@@ -12,7 +12,7 @@
       </view>
       <view class="weui-tab__panel">
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <form bindsubmit="queryMyopia">
+          <form bindsubmit="myopia">
             <view class="weui-cell weui-cell_input">
               <view class="weui-cell__hd">
                 <view class="weui-label">选择学校</view>
@@ -23,43 +23,54 @@
                 </picker>
               </view>
             </view>
-            <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell weui-cell_input ">
               <view class="weui-cell__hd">
                 <view class="weui-label">姓名</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="name" type="text" maxlength="10" placeholder="请输入验证码" />
+                <input class="weui-input" name="name" type="text" maxlength="10" placeholder="请输入姓名" />
               </view>
             </view>
-            <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell weui-cell_input ">
               <view class="weui-cell__hd">
                 <view class="weui-label">身份证号</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="id3" type="idcard" maxlength="18" value='130503201301240050' placeholder="身份证号" />
+                <input class="weui-input" name="id3" type="idcard" maxlength="18" value='' placeholder="身份证号" />
               </view>
             </view>
             <view class="button-sp-area">
-              <button class="weui-btn" type="primary" plain="true" form-type="submit">按钮</button>
+              <button class="weui-btn" type="primary" plain="true" form-type="submit">查询</button>
             </view>
           </form>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <form bindsubmit="calbmi" bindreset="formReset">
+          <form bindsubmit="calbmi" >
             <view class="weui-cell weui-cell_input weui-cell_vcode">
               <view class="weui-cell__hd">
-                <view class="weui-label">身高</view>
+                <view class="weui-label">身高Cm</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="sg" type="digit" maxlength="6" placeholder="保留两位小数" />
+                <input class="weui-input" bindblur="sginput" name="sg" value="{{sg}}" type="number" maxlength="6" placeholder="一位小数有效" />
               </view>
             </view>
             <view class="weui-cell weui-cell_input weui-cell_vcode">
               <view class="weui-cell__hd">
-                <view class="weui-label">体重</view>
+                <view class="weui-label">体重Kg</view>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" name="tz" type="digit" maxlength="6" placeholder="保留两位小数" />
+                <input class="weui-input" name="tz" bindblur="tzinput" value="{{tz}}" type="digit" maxlength="6" placeholder="一位小数有效" />
+              </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">性别</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker  bindchange="bindPickerChange"value="{{sex}}" range="{{sexc}}"  >
+                  <view class="weui-input">{{sexc[sex]}}</view>
+                </picker>
               </view>
             </view>
             <view class="weui-cells weui-cells_after-title">
@@ -93,5 +104,10 @@
         </view>
       </view>
     </view>
-  </view>
+
+</view>
+ </view>
+<view class="weui-footer">
+
+<view class="weui-footer__text">Copyright©邢台市疾控中心 斌</view>
 </view>

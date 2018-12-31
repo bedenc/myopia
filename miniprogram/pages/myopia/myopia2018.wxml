@@ -1,10 +1,59 @@
-<!--miniprogram/pages/myopia/myopia2018.wxml-->
+<!--miniprogram/pages/bmi/bmi.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">2018年邢台市青少年视力调查结果反馈</view>
+  </view>
+  <view class="page__bd">
+      <view class="weui-cells__title"></view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd"> 检查项目</view>
+        <view class="weui-cell__ft">右眼</view>
+        <view class="weui-cell__ft">左眼</view>
+      </view>
 
-<view class="context">
-<text class='h2'>视力检查结果{{}}</text>
-<rich-text nodes="{{shili}}" bindtap="tap"></rich-text>
-<rich-text>
-{{instruction}}
-</rich-text>
+    </view>
+    <view class="weui-cells__title">远视力</view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd"> 5米远视力</view>
+        <view class="weui-cell__ft">{{myopia18.visionr}}</view>
+        <view class="weui-cell__ft">{{myopia18.visionl}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd"> 矫正视力</view>
+        <view class="weui-cell__ft">{{myopia18.glassr}}</view>
+        <view class="weui-cell__ft">{{myopia18.glassl}}</view>
+      </view>
+    </view>
+        <view class="weui-cells__title">电脑验光</view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd"> 球镜S</view>
+        <view class="weui-cell__ft">{{myopia18.spherr}}</view>
+        <view class="weui-cell__ft">{{myopia18.spherl}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd"> 柱镜C</view>
+        <view class="weui-cell__ft">{{myopia18.cylinr}}</view>
+        <view class="weui-cell__ft">{{myopia18.cylinl}}</view>
+      </view>
+            <view class="weui-cell">
+        <view class="weui-cell__bd"> 轴镜A</view>
+        <view class="weui-cell__ft">{{myopia18.axisr}}</view>
+        <view class="weui-cell__ft">{{myopia18.axisl}}</view>
+      </view>
+      <view class="weui-article">
+        <view class="weui-article__section">
+          <view class="weui-article__p">
+          {{instruction}}
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+<view class="weui-footer">
+
+<view class="weui-footer__text">Copyright©邢台市疾控中心 斌</view>
 </view>
-
+  </view>

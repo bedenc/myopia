@@ -6,57 +6,74 @@ Page({
    */
   
   data: {
-    multiArray: [],
-    multiIndex: [0, 0],
-    instruction: ""   
+    index:"",
+    id3:"",
+    name:"",
+    instruction: "",
+    myopia18: {
+      "age": "",
+      "glasstype": "-",
+      "visionl": "-",
+      "visionr": "-",
+      "glassl": "-",
+      "glassr": "-",
+      "okl": "-",
+      "okr": "-",
+      "spherl": "-",
+      "spherr": "-",
+      "cylinl": "-",
+      "cylinr": "-",
+      "axisl": "-",
+      "axisr": "-",
+    }
   },
   
 
-  queryMyopia: function(e) {
-    var index = [this.data.multiIndex[0] + 1, this.data.multiIndex[1] + 1];
+  onLoad: function(e) {
     // 调用云函数
-    wx.cloud.callFunction({
-      name: 'query',
-      data: {
-        "index": index,
-        "id3": e.detail.value.id3,
-        "name": e.detail.value.name
-      },
-      success: res => {
-        console.log('[云函数] [query] user openid: ', res.result)
-        var myopia18 = res.result.data;
-        var eerr = res.result.errMsg;
-        console.log(myopia18, eerr);
-        if (myopia18.length != 1) {
-          if (err.search("ok")) {
-            this.setData({
-              instruction: "居然没查到"
-            })
-          } else {
-            this.setData({
-              instruction: "网络问题，过会再试"
-            })
-          }
-          return
-        }
-        this.setData({
-          instruction: JSON.stringify(myopia18[0])
-        })
-      },
-      fail: err => {
-        console.error('[云函数-query] 网络有问题？？', err)
-        this.setData({
-          instruction: '哎呀，网络有问题'
-        })
-      }
-    })
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
-  },
+  onLoad: function(e) {
+      wx.cloud.callFunction({
+        name: 'query',
+        data: {
+          "point": e.point,
+          "school": e.school,
+          "id3": e.id3,
+          "name": e.name
+        },
+        success: res => {
+          console.log('[云函数] [query] : ', res.result )
+          var result = res.result.data;
+          var eerr = res.result.errMsg;
+          console.log(result, eerr);
+          if (result.length != 1) {
+            if (eerr.search("ok")) {
+              this.setData({
+                instruction: "居然没查到,请检查信息是否有误"
+              })
+            } else {
+              this.setData({
+                instruction: "网络问题，过会再试"
+              })
+            }
+            return
+          }
+          this.setData({
+            myopia18: result[0],
+          })
+        },
+        fail: err => {
+          console.error('[云函数-query] 网络有问题？？', err)
+          this.setData({
+            instruction: '哎呀，网络有问题'
+          })
+        }
+      })
+   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

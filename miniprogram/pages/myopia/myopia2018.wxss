@@ -9,8 +9,6 @@
   color: #007aff;
   align-content: center;
 } 
-tbody th td tr{
-  font-size: 12px;
-  color: #007aff;
-  align-content: center;
+.weui-cell__ft{
+  width: 30%;
 }

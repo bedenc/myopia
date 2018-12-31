@@ -1,37 +1,41 @@
 <!--miniprogram/pages/bmi/bmi.wxml-->
 <view class="page">
-    <view class="page__hd">
-        <view class="page__title">Article</view>
-        <view class="page__desc">文章</view>
+  <view class="page__hd">
+    <view class="page__title">BMI计算结果</view>
+  </view>
+  <view class="page__bd">
+      <view class="weui-cells__title"></view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd"> 您的BMI</view>
+        <view class="weui-cell__ft">{{bmi}}</view>
+      </view>
+              <view class="weui-cell">
+        <view class="weui-cell__bd"> 您的体质状态</view>
+        <view class="weui-cell__ft">{{btype}}</view>
+      </view>
+        <view class="weui-cell">
+        <view class="weui-cell__bd"> 您的理想体重</view>
+        <view class="weui-cell__ft">{{target}}Kg</view>
+      </view>
     </view>
-    <view class="page__bd">
-        <view class="weui-article">
-            <view class="weui-article__h1">大标题</view>
-            <view class="weui-article__section">
-                <view class="weui-article__title">章标题</view>
-                <view class="weui-article__section">
-                    <view class="weui-article__h3">1.1 节标题</view>
-                    <view class="weui-article__p">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                    </view>
-                    <view class="weui-article__p">
-                        <image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />
-                        <image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />
-                    </view>
-                </view>
-                <view class="weui-article__section">
-                    <view class="weui-article__h3">1.2 节标题</view>
-                    <view class="weui-article__p">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </view>
-                </view>
-            </view>
+
+      <view class="weui-article">
+        <view class="weui-article__section">
+          <view class="weui-article__p">
+          BMI结果是评价您体质的指数，它简单、易得，适用于大部分人群。
+           </view>
+           <view class="weui-article__p">
+          部分人群不适用BMI，如运动员、进行重量训练的人、怀孕或哺乳期妇女、身体虚弱或久坐不动的老人等。
+           </view>
+           <view class="weui-article__p">
+          如果认为BMI算出来的结果不能正确反映体重问题，请带着结果与医师讨论，并要求做体脂肪测试。<br/>
+          </view>
         </view>
+      </view>
     </view>
+    <view class="weui-footer">
+
+<view class="weui-footer__text">Copyright©邢台市疾控中心 斌</view>
 </view>
+  </view>

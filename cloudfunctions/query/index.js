@@ -23,7 +23,8 @@ exports.main = async  (event, context) => {
   //  console.log(context)
   var nm = event.name
   var id = event.id3
-  var index = event.index
+  var p = parseInt(event.point)
+  var s = parseInt(event.school)
   var rr = ""
   //add history 
   try {
@@ -31,12 +32,10 @@ exports.main = async  (event, context) => {
       // data 字段表示需新增的 JSON 数据
       data: {
         openid: wxContext.OPENID,
-        appid: wxContext.APPID,
         unionid: wxContext.UNIONID,
         name: nm,
         id: id,
         due: db.serverDate(),
-        phone: ""
       }
     })
   } catch (e) {
@@ -44,11 +43,13 @@ exports.main = async  (event, context) => {
   }
 
   //query myopia
-  console.log(nm, id, index[0]);
+  console.log(nm, id, typeof (p), typeof (s),p, s);
   const myopia = db.collection('result');
   try {
     return await myopia.where({
-      ID3: id
+      id3: id,
+      point:p,
+      school:s,
     })
     .get()
   } catch (e) {
