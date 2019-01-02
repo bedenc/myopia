@@ -8,3 +8,6 @@
   align: center;
   color: rgb(22, 23, 87);
 }
+.weui-article__p{
+  color: rgb(31, 197, 53);
+}

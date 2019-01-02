@@ -1,20 +1,17 @@
 <!--miniprogram/pages/bmi/bmi.wxml-->
 <view class="page">
   <view class="page__hd">
-    <view class="page__title">2018年邢台市青少年视力检查结果反馈</view>
+    <view class="page__title"></view>
   </view>
   <view class="page__bd">
-      <view class="weui-cells__title"></view>
     <view class="weui-cells">
+
       <view class="weui-cell">
         <view class="weui-cell__bd"> 检查项目</view>
         <view class="weui-cell__ft">右眼 R</view>
         <view class="weui-cell__ft">左眼 L</view>
       </view>
-
-    </view>
-    <view class="weui-cells__title">5米远视力</view>
-    <view class="weui-cells">
+        <view class="weui-cells__title">5米远视力</view>
       <view class="weui-cell">
         <view class="weui-cell__bd"> 裸眼视力</view>
         <view class="weui-cell__ft">{{myopia18.visionr}}</view>
@@ -25,9 +22,9 @@
         <view class="weui-cell__ft">{{myopia18.glassr}}</view>
         <view class="weui-cell__ft">{{myopia18.glassl}}</view>
       </view>
-    </view>
-        <view class="weui-cells__title">电脑验光</view>
-    <view class="weui-cells">
+
+      <view class="weui-cells__title">电脑验光</view>
+
       <view class="weui-cell">
         <view class="weui-cell__bd"> 球镜 DS</view>
         <view class="weui-cell__ft">{{myopia18.spherr}}</view>
@@ -45,15 +42,17 @@
       </view>
       <view class="weui-article">
         <view class="weui-article__section">
-          <view class="weui-article__p">
+          <view class="weui-article__h1">
           {{instruction}}
+          </view>
+          <view class="weui-article__p">
+          以上结果仅供参考，如视力异常，建议尽快到正规的眼科医疗机构进行复查。
           </view>
         </view>
       </view>
     </view>
     </view>
+  </view>
 <view class="weui-footer">
-
 <view class="weui-footer__text">Copyright©邢台市疾控中心 斌</view>
 </view>
-  </view>

@@ -72,19 +72,19 @@ Page({
           },
           {
             "code": 6,
-            "name": "aaa"
+            "name": "县直一幼"
           },
           {
             "code": 7,
-            "name": "aaa"
+            "name": "鑫蕾幼儿园"
           },
           {
             "code": 8,
-            "name": "aaa"
+            "name": "西位明德小学"
           },
           {
             "code": 9,
-            "name": "aaa"
+            "name": "县直第二幼儿园"
           }          
         ],
         "code": 2,
@@ -122,6 +122,7 @@ tz:"",
     var name = e.detail.value.name;
     var id3 = e.detail.value.id3;
     var a = /\d{17}([0-9]|x)/;
+    id3 = id3.toLowerCase();
     console.log(a.test(id3),id3);
     if (!a.test(id3)) {
         wx.showToast({
